@@ -15,6 +15,7 @@ def get_atlas_brain(source: int | str = 25, cache_dir: str | Path = None, *,
 
     if isinstance(source, int):
         source = f"allen_mouse_{source}um"
+        #source = f"allen_human_500um"
 
     if cache_dir is not None:
         cache_dir = str(Path(cache_dir).absolute())
