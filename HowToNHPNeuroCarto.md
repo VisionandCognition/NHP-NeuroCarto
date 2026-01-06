@@ -5,5 +5,4 @@
 ## Make a channel selection in NHP-NeuroCarto
 *to be written*
 
-## Additional NeuroCarto functions
-See the [wiki](https://github.com/AntonioST/NeuroCarto/wiki) on the original repository.
+For additional NeuroCarto functionality, see the [wiki](https://github.com/AntonioST/NeuroCarto/wiki) on the original repository.
