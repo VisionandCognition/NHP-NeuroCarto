@@ -162,14 +162,14 @@ class ImageView(BoundView, metaclass=abc.ABCMeta):
     @property
     def width(self) -> float:
         try:
-            return self._image.width
+            return 10*self._image.width
         except (TypeError, AttributeError):
             return 0
 
     @property
     def height(self) -> float:
         try:
-            return self._image.height
+            return 10*self._image.height
         except (TypeError, AttributeError):
             return 0
 
@@ -245,9 +245,9 @@ class ImageView(BoundView, metaclass=abc.ABCMeta):
 
     def _setup_content(self, slider_width: int = 300,
                        support_index=True,
-                       support_rotate=True,
+                       support_rotate=False,
                        support_scale=True,
-                       support_alpha=False,
+                       support_alpha=True,
                        **kwargs) -> list[UIElement]:
         """
 

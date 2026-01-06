@@ -422,7 +422,7 @@ class CartoApp(BokehApplication):
         # middle figure
         self.logger.debug('index figure')
         self.probe_fig = Figure(
-            width=600, height=800,
+            width=1000, height=800,
             x_axis_label='(um)', y_axis_label='(um)',
             tools='', toolbar_location='above'
         )
