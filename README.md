@@ -1,5 +1,4 @@
-# NHP-NeuroCarto: A Neuropixels Channelmap Editor for NHP probes
-
+# NHP-NeuroCarto: An NHP Neuropixels Channelmap Editor
 ## NeuroCarto
 **NeuroCarto** is a neural probe channel map editor for the Neuropixels probe family. It allows user to create a blueprint for arranging electrodes in a desired density and generate a custom channel map. It was developed by Ta-Shun Su and Fabian Kloosterman at NERF/KUL.
 
