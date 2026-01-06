@@ -572,7 +572,7 @@ class CartoApp(BokehApplication):
         ext.extend(self.get_editor_userconfig().get('views', [
             'neurocarto.views.data_density:ElectrodeDensityDataView',
             'neurocarto.views.view_efficient:ElectrodeEfficiencyData',
-            'blueprint', 'atlas'
+            'blueprint'#, 'atlas'
         ]))
         ext.extend(config.extra_view)
 

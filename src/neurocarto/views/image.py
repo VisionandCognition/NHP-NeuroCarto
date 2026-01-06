@@ -162,14 +162,14 @@ class ImageView(BoundView, metaclass=abc.ABCMeta):
     @property
     def width(self) -> float:
         try:
-            return 10*self._image.width
+            return 100*self._image.width # 1 pixel = 100 um
         except (TypeError, AttributeError):
             return 0
 
     @property
     def height(self) -> float:
         try:
-            return 10*self._image.height
+            return 100*self._image.height
         except (TypeError, AttributeError):
             return 0
 
