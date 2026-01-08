@@ -18,8 +18,7 @@ If you want to run the NHP adaptation you should **not** install through PyPi (p
 - Customize electrode selection.
 - Show channel efficiency and electrode density.
 
-
-## Install and Run
+# Install and Run
 ### Prepare an environment.
 Requires `Python 3.10` or later. We suggest creating a `conda` environment ([https://www.anaconda.com/](https://www.anaconda.com/)).
 

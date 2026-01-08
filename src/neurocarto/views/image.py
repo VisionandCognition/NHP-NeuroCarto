@@ -162,14 +162,21 @@ class ImageView(BoundView, metaclass=abc.ABCMeta):
     @property
     def width(self) -> float:
         try:
-            return 100*self._image.width # 1 pixel = 100 um
+            # assume image file is approximately NHP head sized (~100 mm wide)
+            # default assumption is that 1 px will be 1 um
+            # calculate a sensible scaling
+            scalefactor = 100000 / self._image.width
+            return round(scalefactor*self._image.width)
+            #return self._image.width
         except (TypeError, AttributeError):
             return 0
 
     @property
     def height(self) -> float:
         try:
-            return 100*self._image.height
+            scalefactor = 100000 / self._image.width
+            return round(scalefactor*self._image.height)
+            #return 10*self._image.height
         except (TypeError, AttributeError):
             return 0
 
