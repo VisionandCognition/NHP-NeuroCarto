@@ -7,7 +7,7 @@ import sys
 from typing import TypeVar, Generic, TypedDict, Any, TYPE_CHECKING, cast, final, NamedTuple
 
 import numpy as np
-from bokeh.models import UIElement, ColumnDataSource, GlyphRenderer, Slider, Switch, Div, tools
+from bokeh.models import UIElement, ColumnDataSource, GlyphRenderer, Slider, Switch, Div, tools, CustomJS
 from bokeh.plotting import figure as Figure
 from numpy.typing import NDArray
 
@@ -636,6 +636,7 @@ class BoundView(ViewBase, InvisibleView, metaclass=abc.ABCMeta):
         super().__init__(config, logger=logger)
 
         self.data_boundary = ColumnDataSource(data=dict(x=[0], y=[0], w=[0], h=[0], r=[0], sx=[1], sy=[1]))
+        self.data_boundary.selected.indices = [0]
 
     # ========== #
     # properties #
@@ -669,9 +670,16 @@ class BoundView(ViewBase, InvisibleView, metaclass=abc.ABCMeta):
         """
         self.render_boundary = f.rect(
             'x', 'y', 'w', 'h', 'r', source=self.data_boundary,
-            color=boundary_color, fill_alpha=0, angle_units='deg',
+            line_color=boundary_color, fill_color=boundary_color, fill_alpha=0.02, angle_units='deg',
         )
         self.data_boundary.on_change('data', as_callback(self._on_boundary_change))
+
+        # Force selection to prevent "area drawing" behavior when clicking and waiting
+        self.data_boundary.selected.js_on_change('indices', CustomJS(args=dict(s=self.data_boundary), code="""
+            if (cb_obj.indices.length == 0 && s.data['x'].length > 0) {
+                cb_obj.indices = [0];
+            }
+        """))
 
         self.tool_boundary = tools.BoxEditTool(description=boundary_desp, renderers=[self.render_boundary], num_objects=1)
         f.tools.append(self.tool_boundary)
