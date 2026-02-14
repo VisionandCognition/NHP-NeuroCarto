@@ -229,18 +229,37 @@ class ImroIO_NP1030(ImroIO):
         return ch, e.shank, bank, chmap.reference, electrode
 
 class ImroIO_NP1032(ImroIO):
+    """
+    NP1032 uses 6-column format: (ch, bank, shank, ap_gain, lfp_gain, ap_filter)
+    This is different from NP1030 which uses 5-column format.
+    """
 
     def parse_electrode(self, *args: int) -> Electrode:
-        ch, s, bank, ref, ed = args
-        assert self.to.e2c(ed, s) == (ch, bank), f'{ed=},{s=},{ch=},{bank=},e2c={self.to.e2c(ed, s)}'
-        self.reference = ref
-        return Electrode(s, *self.to.e2cr(ed))
+        # Format: (ch, bank, shank, ap_gain, lfp_gain, ap_filter)
+        from .npx import e2cr
+        
+        ch, bank, s, a, l, f = args
+        # Derive electrode position from channel (similar to NP1)
+        e = Electrode(s, *e2cr(self.probe_type, ch))
+        e.ap_band_gain = a
+        e.lf_band_gain = l
+        e.ap_hp_filter = f != 0
+        return e
 
     def string_electrode(self, chmap: ChannelMap, ch: int, e: Electrode) -> tuple[int, ...]:
+        # Format: (ch, bank, shank, ap_gain, lfp_gain, ap_filter)
+        # Bank calculation is similar to NP1030
         from .npx import cr2e
         electrode = cr2e(self.probe_type, e)
         channel, bank = self.to.e2c(electrode, e.shank)
-        return ch, e.shank, bank, chmap.reference, electrode
+        
+        # Set default gains if not already set
+        ap_gain = getattr(e, 'ap_band_gain', 500)
+        lf_gain = getattr(e, 'lf_band_gain', 250)
+        ap_filter = getattr(e, 'ap_hp_filter', True)
+        
+        return ch, bank, e.shank, ap_gain, lf_gain, 1 if ap_filter else 0
+
 #=== /CK added ===
 
 
