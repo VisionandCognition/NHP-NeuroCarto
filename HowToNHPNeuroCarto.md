@@ -25,9 +25,9 @@ neurocarto --view=$PathToYourScreenshot
 ```
 ![NeuroCartoInit](/docimg/NeuroCartoInit.png)
 
-- **Step 2**: Note that the axes is in um and your screen shot does not have the correct size. The image should have a default width of 10 cm or 10.000 um. Use the image scale slider and the correspondence between your scale bar and axis to set the image to the correct size. It could help to move the image around. You can do this with the tool in the top right. Not that the drag tool only drags the image if you immediately move the mouse after clicking. If you wait a bit longer you'll see a new rectangle that gets created and the image will be rescaled and moved to this reactangle. This takes some getting used to.
+- **Step 2**: Note that the axes is in um and your screen shot does not have the correct size. The image should have a default width of 10 cm or 10.000 um. Use the image scale slider and the correspondence between your scale bar and axis to set the image to the correct size. It could help to move the image around. You can do this by deselecting the pan tool in the toolbar and dragging the image.
 - **Step 3**: Load your NHP probe template with the 'New' button.
-- **Step 4**: Use the Alpha slider on the right to control the transparancy of the screenshot image so that you can see both the planned probe and the channel template. Now move the screenshot image so that it aligns with the trajectory line you planned in slicer.
+- **Step 4**: Use the Alpha slider on the right to control the transparancy of the screenshot image so that you can see both the planned probe and the channel template. Now move the screenshot image so that it aligns with the trajectory line you planned in slicer. When the image is in the right spot you can freeze the dragging behavior with the checkbox on the right. Do this, otherwise the box-select tool will also move the image around. This is necessary to bypass Bokeh's very annoying default dragging behavior.
 
 ![AlignedProbe](/docimg/AlignedProbe.png)
 
