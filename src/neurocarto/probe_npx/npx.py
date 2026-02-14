@@ -87,7 +87,7 @@ PROBE_TYPE_NP1020 = ProbeType(1020, 1, 2, 2496, 384, 87, 20, 0, 9)
 PROBE_TYPE_NP1022 = ProbeType(1020, 1, 2, 2496, 384, 103, 20, 0, 9)
 # https://github.com/billkarsh/SpikeGLX/blob/bc2c10e99e68dcc9ec6b9a9c75272a74c7e53034/Src-imro/IMROTbl_T1030.h#L12
 PROBE_TYPE_NP1030 = ProbeType(1030, 1, 2, 4416, 384, 87, 20, 0, 14)
-PROBE_TYPE_NP1032 = ProbeType(1030, 1, 2, 4416, 384, 103, 20, 0, 14)
+PROBE_TYPE_NP1032 = ProbeType(1032, 1, 2, 4416, 384, 103, 20, 0, 14)
 # https://github.com/billkarsh/SpikeGLX/blob/bc2c10e99e68dcc9ec6b9a9c75272a74c7e53034/Src-imro/IMROTbl_T1100.h#L12
 PROBE_TYPE_NP1100 = ProbeType(1100, 1, 8, 384, 384, 6, 6, 0, 2)
 # https://github.com/billkarsh/SpikeGLX/blob/bc2c10e99e68dcc9ec6b9a9c75272a74c7e53034/Src-imro/IMROTbl_T1110.h#L61
